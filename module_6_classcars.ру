@@ -1,0 +1,47 @@
+﻿class Cars:
+    __COLOR_VARIANTS = ['Red', 'Green', 'Blue', 'White', 'Black', 'Yellow', 'Gray']
+
+    def __init__(self, owner, model, engine_power, color):
+        self.owner = str(owner)
+        self.__model = str(model)
+        self.__engine_power = int(engine_power)
+        self.__color = str(color)
+
+    def get_model(self):
+        print(f'Модель: {self.__model}')
+
+    def get_horsepower(self):
+        print(f'Мощность двигателя: {self.__engine_power}')
+
+    def get_color(self):
+        print(f'Цвет: {self.__color.upper()}')
+
+    def print_info(self):
+        self.get_model()
+        self.get_horsepower()
+        self.get_color()
+        print(f'Владелец: {self.owner}\n')
+
+    def set_color(self, new_color):
+        reg_colors = [color.lower() for color in self.__COLOR_VARIANTS]
+
+        if new_color.lower() in reg_colors:
+            self.__color = new_color
+        else:
+            print(f'Нельзя изменить цвет на {new_color}\n')
+
+
+class Sedan(Cars):
+    __PASSENGERS_LIMIT = 4
+
+
+if __name__ == "__main__":
+    avto1 = Sedan('driver', 'Lada', 115, 'Green')
+
+    avto1.print_info()
+
+    avto1.set_color('Мокрый асфальт')
+    avto1.set_color('ЧЕРНЫЙ')
+    avto1.owner = 'Мария'
+
+    avto1.print_info()
